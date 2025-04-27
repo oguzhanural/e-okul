@@ -1,98 +1,48 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Mini E-Okul</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ders Notları Sistemi</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Giriş Ekranı -->
-<div id="login-screen">
-  <form id="login-form">
-    <h2>E-Okul Giriş</h2>
-    <label>TC Kimlik No
-      <input type="text" id="tc" maxlength="11" required pattern="\d{11}">
-    </label>
-    <label>Şifre
-      <input type="password" id="password" required>
-    </label>
-    <button type="submit">Giriş Yap</button>
-    <p id="login-error" style="color:red;display:none;font-size:0.85rem;">Hatalı TC veya Şifre</p>
-  </form>
-</div>
+    <div class="main-container">
+        <div class="card" id="login-container">
+            <h2>Öğrenci Girişi</h2>
+            <table class="form-table">
+                <tr>
+                    <td><input type="text" id="tc" placeholder="TC Kimlik No"></td>
+                </tr>
+                <tr>
+                    <td><input type="password" id="password" placeholder="Şifre"></td>
+                </tr>
+                <tr>
+                    <td><button id="login-btn">Giriş Yap</button></td>
+                </tr>
+                <tr>
+                    <td><div id="error-msg"></div></td>
+                </tr>
+            </table>
+        </div>
 
-<!-- Dashboard -->
-<div id="dashboard" class="hidden">
-  <!-- Sol Menü / Profil Kartı -->
-  <div class="sidebar">
-     <div class="menu-actions" id="actionBtn">⚙️</div>
-     <h2 id="student-name">Öğrenci</h2>
-     <div class="profile-card" id="profile-card"><!-- JS dolduracak --></div>
-  </div>
-  <!-- İçerik Alanı -->
-  <div class="content-area">
-     <h2>1. Dönem</h2>
-     <table id="grades-table-1">
-       <thead>
-         <tr>
-           <th>Ders</th>
-           <th>1. Sınav</th>
-           <th>2. Sınav</th>
-           <th>Proje</th>
-           <th>Ortalama</th>
-         </tr>
-       </thead>
-       <tbody></tbody>
-     </table>
-     <h2>2. Dönem</h2>
-     <table id="grades-table-2">
-       <thead>
-         <tr>
-           <th>Ders</th>
-           <th>1. Sınav</th>
-           <th>2. Sınav</th>
-           <th>Proje</th>
-           <th>Ortalama</th>
-         </tr>
-       </thead>
-       <tbody></tbody>
-     </table>
-  </div>
-</div>
+        <div class="card hidden" id="notes-container">
+            <h2>Ders Notlarınız</h2>
+            <button id="logout-btn">Çıkış Yap</button>
+            <table class="notes-table">
+                <thead>
+                    <tr>
+                        <th>Ders Adı</th>
+                        <th>1. Sınav</th>
+                        <th>2. Sınav</th>
+                        <th>Proje</th>
+                    </tr>
+                </thead>
+                <tbody id="notes-body"></tbody>
+            </table>
+        </div>
+    </div>
 
-<!-- Profil Düzenle / Çıkış Modalı -->
-<div class="modal-overlay hidden" id="modal">
-  <div class="modal">
-    <h3>Profilimi Düzenle</h3>
-    <form id="profile-form">
-      <label>Ad Soyad
-        <input type="text" id="p-name" disabled>
-      </label>
-      <label>Sınıf
-        <input type="text" id="p-class" disabled>
-      </label>
-      <label>TC
-        <input type="text" id="p-tc" disabled>
-      </label>
-      <label>Email
-        <input type="email" id="p-email">
-      </label>
-      <label>Telefon
-        <input type="tel" id="p-phone">
-      </label>
-      <label>Veli İletişim
-        <input type="tel" id="p-parent">
-      </label>
-      <div class="actions">
-        <button type="button" id="logout-btn">Çıkış Yap</button>
-        <button type="submit">Güncelle</button>
-        <button type="button" id="close-modal">İptal</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
